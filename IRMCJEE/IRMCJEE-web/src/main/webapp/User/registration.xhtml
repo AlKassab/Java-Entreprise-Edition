@@ -1,0 +1,213 @@
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content1">
+		<section class="page_breadcrumbs ds parallax section_padding_75">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h1 class="weight-black">Registration</h1>
+						<ol class="breadcrumb darklinks grey">
+							<li><a href="./"> HomePage </a></li>
+
+							<li class="active">Registration</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</section>
+	</ui:define>
+
+	<ui:define name="content2">
+		<section class="ls section_padding_top_100 section_padding_bottom_100">
+			<div class="container">
+				<div class="row">
+
+					<div class="form-group validate-required"
+						id="billing_first_name_field">
+
+						<div class="col-sm-6">
+
+							<div class="form-group validate-required"
+								id="firstname">
+								<p:messages showDetail="true" autoUpdate="true" closable="true"></p:messages>
+								<h:outputLabel for="firstname" class="control-label">
+									<span class="grey">First Name </span>
+									<span class="required">*</span>
+								<p:inputText class="form-control " name="billing_first_name"
+									id="firstname" placeholder=""
+									value="#{userBean.u.firstName}" required="true" requiredMessage="Please enter your fisrt name"></p:inputText>
+							</div>
+
+							<div class="form-group" id="billing_company_field">
+								<h:outputLabel for="billing_company" class="control-label">
+									<span class="grey">Username </span>
+									<span class="required">*</span>
+								</h:outputLabel>
+								<p:inputText type="text" class="form-control "
+									name="billing_last_name" id="billing_last_name" placeholder=""
+									value="#{userBean.u.username}" required="true"></p:inputText>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group validate-required"
+							id="billing_last_name_field">
+							<h:outputLabel for="billing_last_name" class="control-label">
+								<span class="grey">Last Name </span>
+								<span class="required">*</span>
+							</h:outputLabel>
+							<p:inputText for="email" type="text" class="form-control "
+								name="billing_last_name" id="billing_last_name"
+								placeholder="Last Name" value="#{userBean.u.lastName}"
+								required="true"> </p:inputText>
+
+
+						</div>
+
+						<div class="form-group validate-required validate-email"
+							id="billing_email_field">
+							<h:outputLabel for="billing_email" class="control-label">
+								<span class="grey">Email Address </span>
+								<span class="required">*</span>
+							</h:outputLabel>
+							<p:inputText type="text" class="form-control " name="billing_email"
+								id="billing_email" placeholder="email"
+								value="#{userBean.u.email}" required="true"
+								validatorMessage="invalid email"> </p:inputText>
+							<h:message id="msg_email" for="email" styleClass="error" />
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group address-field validate-required"
+							id="billing_address_fields">
+							<h:outputLabel for="billing_address_1" class="control-label"> <span
+								class="grey">Address </span> <span class="required">*</span>
+							</h:outputLabel> <p:inputText type="text" class="form-control "
+								name="billing_address_1" id="billing_address_1"
+								placeholder="Street address" value="#{userBean.u.address}"
+								required="true"></p:inputText>
+
+						</div>
+
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-sm-6">
+
+						<div class="form-group">
+							<h:outputLabel for="billing_state" class="control-label"> <span
+								class="grey">Country </span> <span class="required">*</span>
+							</h:outputLabel> <select class="form-control" name="billing_state"
+								id="billing_state" value="#{userBean.u.country}" required="true">
+								<option value="">Select a country…</option>
+								<option value="AX">Åland Islands</option>
+								<option value="AF">Afghanistan</option>
+								<option value="AL">Albania</option>
+								<option value="GA">Gabon</option>
+								<option value="GM">Gambia</option>
+								<option value="GE">Georgia</option>
+								<option value="DE">Germany</option>
+								<option value="GH">Ghana</option>
+								<option value="AE">United Arab Emirates</option>
+								<option value="GB" selected="selected">United Kingdom
+									(UK)</option>
+								<option value="ZW">Zimbabwe</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+
+						<div class="form-group">
+							<h:outputLabel for="billing_state" class="control-label"> <span
+								class="grey">Gender </span> <span class="required">*</span>
+							</h:outputLabel> <select class="form-control" name="billing_state"
+								id="billing_state" value="#{userBean.u.gender}" required="true">
+								<option value="AX">Female</option>
+								<option value="AF">Male</option>
+								<option value="AL">Rather not to say</option>
+								<option value="GA">Other</option>
+
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group validate-required"
+						id="billing_first_name_field">
+						<div class="col-sm-6">
+
+							<div class="form-group" id="billing_password_field">
+								<h:outputLabel for="billing_password" class="control-label"> <span
+									class="grey">Password</span> <span class="required">*</span>
+								</h:outputLabel> <p:inputText type="text" class="form-control "
+									name="billing_password" id="billing_password"
+									placeholder="Password" value="#{userBean.u.password}"
+									required="true"></p:inputText>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="form-group" id="billing_password2_field">
+							<h:outputLabel for="billing_password2" class="control-label"> <span
+								class="grey">Confirm Password</span> <span class="required">*</span>
+							</h:outputLabel> <p:inputText type="text" class="form-control "
+								name="billing_password2" id="billing_password2" placeholder=""
+								value="#{userBean.u.confirmPassword}" required="true"></p:inputText>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group validate-required"
+						id="billing_first_name_field">
+						<p:outputLabel for="radio" value="Role"></p:outputLabel>
+						<p:selectOneRadio id="radio" value="#{userBean.u.role}"
+							columns="1" styleClass="form-group">
+							<f:selectItems value="#{userBean.lst}" var="r" itemValue="#{r}"
+								itemLabel="#{r}"></f:selectItems>
+						</p:selectOneRadio>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group validate-required"
+						id="billing_first_name_field">
+						<div class="col-sm-6">
+							<div class="col-sm-12">
+								<p:commandButton class="theme_button wide_button color1"
+									action="#{userBean.createProfile()}" value="Register Now"></p:commandButton>
+								<button type="reset" class="theme_button wide_button">Clear
+									Form</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+	</ui:define>
+</ui:composition>
+</html>

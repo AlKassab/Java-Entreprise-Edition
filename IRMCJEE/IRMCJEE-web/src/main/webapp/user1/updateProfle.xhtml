@@ -1,0 +1,138 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/template/Header2.xhtml" />
+			</ui:insert>
+		</div>
+		<section class="main__middle__container">
+			<div class="titles blog text-left">
+				<div class="container">
+					<div class="seper"></div>
+					<h2 class="page__title">Get an</h2>
+					<h2 class="page__title">Account</h2>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row no_padding title__block nothing no-margin">
+
+					<div class="col-md-8">
+						<h3>Registration</h3>
+						<div style="width: 100%" class="dc_divider4"></div>
+						<p class="black-text"></p>
+						<p id="feedback"></p>
+						<p:messages showDetail="true" autoUpdate="true" closable="true" />
+						<h:form>
+							<div class="form-group col-md-6">
+								<h:outputText value="First Name" />
+								<h:inputText id="firstname" style="width:100%;"
+									class="form-control" value="#{profileBean.u.firstName}" />
+
+							</div>
+							<div class="form-group col-md-5">
+								<h:outputText value="Last Name" />
+								<h:inputText id="lastname" style="width:100%;"
+									class="form-control" value="#{profileBean.u.lastName}" />
+
+							</div>
+
+							<div class="form-group col-md-6">
+								<h:outputText value="Email Address" />
+								<h:inputText id="mail" style="width:100%;" class="form-control"
+									value="#{profileBean.u.email}" validatorMessage="invalid Email">
+									<f:validateRegex
+										pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" />
+								</h:inputText>
+								<p:watermark for="mail" value="example@example.com"
+									id="watermark" />
+
+							</div>
+
+							<div class="form-group col-md-5">
+								<h:outputText value="Password" />
+								<h:inputSecret style="width:100%;" class="form-control"
+									value="#{profileBean.u.password}" />
+							</div>
+							<div class="form-group col-md-6">
+								<h:outputText value="Confirm Password" />
+								<h:inputSecret id="confirm" style="width:100%;"
+									class="form-control" value="#{profileBean.u.confirmPassword}" />
+
+							</div>
+							<div class="form-group col-md-5">
+								<h:outputText value="Country" />
+								<h:selectOneMenu value="#{profileBean.u.country}" id="country"
+									class="form-control" required="true">
+									<f:selectItems value="#{userBean.countries()}" var="i"
+										itemLabel="#{i.displayCountry}" itemValue="#{i.displayName}"></f:selectItems>
+								</h:selectOneMenu>
+
+							</div>
+
+							<div class="form-group col-md-6">
+								<h:outputText value="Adress" />
+								<h:inputText id="Adress" style="width:100%;"
+									class="form-control" value="#{profileBean.u.address}" />
+
+							</div>
+
+							<div class="form-group col-md-5">
+								<h:outputText value="Gender" />
+								<h:selectOneMenu id="type" class="form-control"
+									value="#{profileBean.u.gender}">
+									<f:selectItems value="#{userBean.lst1}" var="c"
+										itemValue="#{c}"></f:selectItems>
+								</h:selectOneMenu>
+
+							</div>
+							<div class="form-group col-md-6">
+								<h:outputText value="Phone Contact" />
+								<h:inputText id="phone" style="width:100%;" class="form-control"
+									value="#{profileBean.u.phoneNumber}"
+									validatorMessage="invalid Phone number">
+									<f:validateLength minimum="8" maximum="8" />
+								</h:inputText>
+
+							</div>
+							<div class="form-group col-md-8">
+								<p:fileUpload value="#{eventbean.file}" mode="simple"
+									skinSimple="true" label="Submit" />
+								<p:commandButton value="Enregistrer" ajax="false"
+									actionListener="#{eventbean.upload}" disabled="true" />
+									</div>
+								<div class="clearfix"></div>
+								<h:commandButton id="btn" class="btn btn-lg btn-info"
+									action="#{profileBean.update()}" value="Save" />
+						</h:form>
+					</div>
+
+					<div class="col-md-4">
+						<h3>Get in touch with us</h3>
+						<div style="width: 60%" class="dc_divider4"></div>
+						<p class="black-text">
+							<span>Address:</span> 123 Street, Fremont, CA, USA
+						</p>
+						<p class="black-text">
+							<span>Telephone:</span> (+216) 71 001 002
+						</p>
+						<p class="black-text">
+							<span>Fax:</span> (+216) 71 002 0002
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/template/footer.xhtml" />
+			</ui:insert>
+		</div>
+	</h:body>
+
+</ui:composition>

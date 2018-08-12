@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="IRMCJEE-ejb">
+		<jta-data-source>java:jboss/datasources/IRMCJEE</jta-data-source>
+		<class>tn.esprit.IRMCJEE.persistence.Admin</class>
+		<class>tn.esprit.IRMCJEE.persistence.Announcement</class>
+		<class>tn.esprit.IRMCJEE.persistence.Application</class>
+		<class>tn.esprit.IRMCJEE.persistence.Article</class>
+		<class>tn.esprit.IRMCJEE.persistence.Collection</class>
+		<class>tn.esprit.IRMCJEE.persistence.Comment</class>
+		<class>tn.esprit.IRMCJEE.persistence.Follow</class>
+		<class>tn.esprit.IRMCJEE.persistence.FollowPk</class>
+		<class>tn.esprit.IRMCJEE.persistence.Institute</class>
+		<class>tn.esprit.IRMCJEE.persistence.Journal</class>
+		<class>tn.esprit.IRMCJEE.persistence.Post</class>
+		<class>tn.esprit.IRMCJEE.persistence.Rating</class>
+		<class>tn.esprit.IRMCJEE.persistence.RatingPk</class>
+		<class>tn.esprit.IRMCJEE.persistence.Researcher</class>
+		<class>tn.esprit.IRMCJEE.persistence.TicketEvent</class>
+		<class>tn.esprit.IRMCJEE.persistence.User</class>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+		</properties>
+	</persistence-unit>
+</persistence>

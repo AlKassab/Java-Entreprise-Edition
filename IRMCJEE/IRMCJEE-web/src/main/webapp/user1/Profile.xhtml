@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/template/Header.xhtml" />
+			</ui:insert>
+		</div>
+		<section class="main__middle__container">
+			<div class="titles blog text-left">
+				<div class="container">
+					<div class="seper"></div>
+					<h2 class="page__title">Your</h2>
+					<h2 class="page__title">Personal Info</h2>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row no_padding title__block nothing no-margin">
+
+					<div class="col-md-8">
+
+						<div style="width: 100%" class="dc_divider4"></div>
+						<p class="black-text"></p>
+						<p id="feedback"></p>
+						<p:messages showDetail="true" autoUpdate="true" closable="true" />
+						<h:form>
+							<div class="form-group col-md-6">
+								<h:outputText value="First Name" />
+								<br></br>
+								<h:outputLabel value="#{profileBean.u.firstName}" />
+
+							</div>
+
+							<div class="form-group col-md-5">
+								<h:outputText value="Last Name" />
+								<br></br>
+								<h:outputLabel value="#{profileBean.u.lastName}" />
+
+							</div>
+
+							<div class="form-group col-md-6">
+								<h:outputText value="Username" />
+								<br></br>
+								<h:outputLabel value="#{profileBean.u.username}" />
+
+							</div>
+							<div class="form-group col-md-5">
+								<h:outputText value="Email" />
+								<br></br>
+								<h:outputLabel value="#{profileBean.u.email}" />
+
+							</div>
+
+
+							<div class="form-group col-md-6">
+								<h:outputText value="Gender" />
+								<br></br>
+								<h:outputLabel class="small-paragraph"
+									value="#{profileBean.u.gender}" />
+
+							</div>
+							<div class="form-group col-md-5">
+								<h:outputText value="Country" />
+								<br></br>
+								<h:outputLabel value="#{profileBean.u.country}" />
+
+							</div>
+
+
+							<div class="clearfix">
+								<h:commandButton id="btn" class="btn btn-lg btn-info"
+									value="Edit Profile" action="#{profileBean.redirect()}">
+								</h:commandButton>
+							</div>
+							<br></br>
+							<div class="clearfix">
+								<h:commandButton id="btn1" class="btn btn-lg btn-info"
+									value="Delete Account" action="#{profileBean.deleteProfile()}">
+								</h:commandButton>
+							</div>
+
+
+
+						</h:form>
+					</div>
+
+					<div class="col-md-4">
+						<h3>Get in touch with us</h3>
+						<div style="width: 60%" class="dc_divider4"></div>
+						<p class="black-text">
+							<span>Address:</span> 123 Street, Fremont, CA, USA
+						</p>
+						<p class="black-text">
+							<span>Telephone:</span> (+216) 71 001 002
+						</p>
+						<p class="black-text">
+							<span>Fax:</span> (+216) 71 002 0002
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/template/footer.xhtml" />
+			</ui:insert>
+		</div>
+	</h:body>
+
+</ui:composition>

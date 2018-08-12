@@ -1,0 +1,125 @@
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content1">
+		<section class="page_breadcrumbs ds parallax section_padding_75">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h1 class="weight-black">Registration</h1>
+						<ol class="breadcrumb darklinks grey">
+							<li><a href="./"> HomePage </a></li>
+
+							<li class="active">Registration</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</section>
+	</ui:define>
+	<ui:define name="content2">
+		<div class="ui-fluid">
+			<div class="ui-g">
+				<div class="ui-g-12">
+
+					<div class="card card-w-title">
+
+
+						<p:messages showDetail="true" autoUpdate="true" closable="true" />
+						<h:form enctype="multipart/form-data">
+							<p:panelGrid columns="4"
+								columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+								layout="grid" styleClass="ui-panelgrid-blank form-group"
+								style="border:0px none; background-color:transparent;">
+
+								<p:outputLabel for="f" value="First name" />
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="f" value="#{userBean.u.firstName}"
+										required="true" autocomplete="off"
+										requiredMessage="Code must be unique and not empty" />
+									
+								</h:panelGroup>
+
+								<p:outputLabel for="l" value="Last name" />
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="l" value="#{userBean.u.lastName}"
+										class="form-control" required="true" autocomplete="off"
+										requiredMessage="Name is Required" />
+									
+
+								</h:panelGroup>
+
+								<p:outputLabel for="us" value="Username" />
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="us" value="#{userBean.u.username}"
+										required="true" autocomplete="off"
+										requiredMessage="Username is Required" />
+									
+								</h:panelGroup>
+
+								<p:outputLabel for="ad" value="Address" />
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="ad" value="#{userBean.u.address}"
+										required="true" autocomplete="off"
+										requiredMessage="Address is Required" />
+
+								</h:panelGroup>
+
+								<p:outputLabel for="g" value="Gender" />
+								<p:selectOneMenu id="g" value="#{userBean.u.gender}">
+									<f:selectItems value="#{userBean.lst1}" var="b"
+										itemValue="#{b}" itemLabel="#{b}">
+										</f:selectItems>
+								</p:selectOneMenu>
+
+								<p:outputLabel for="p" value="Password" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="p" value="#{userBean.u.password}"
+										required="true" requiredMessage="Password is Required" />
+									
+								</h:panelGroup>
+
+								<p:outputLabel for="c" value="Confirm password" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="c" value="#{userBean.u.confirmPassword}"
+										required="true" requiredMessage="Confirm password is Required" />
+								
+								</h:panelGroup>
+	
+
+								<p:outputLabel for="ph" value="Contact Phone" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="ph" value="#{userBean.u.phoneNumber}" />
+								
+								</h:panelGroup>
+
+								<p:outputLabel for="ra" value="Role"></p:outputLabel>
+								<p:selectOneRadio id="ra" value="#{userBean.u.role}" columns="1"
+									styleClass="form-group">
+									<f:selectItems value="#{userBean.lst}" var="r" itemValue="#{r}"
+										itemLabel="#{r}"></f:selectItems>
+								</p:selectOneRadio>
+
+							</p:panelGrid>
+
+							<br />
+							<p:commandButton value="Resigter Now"
+								action="#{userBean.createProfile()}" style="width:100px"
+								process="@form" update="@form" ajax="false" />
+
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

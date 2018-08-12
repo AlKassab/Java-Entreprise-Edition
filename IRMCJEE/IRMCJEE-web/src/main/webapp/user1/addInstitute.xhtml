@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+	<h:body>
+		<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+		<script>tinymce.init({ selector:'textarea' });</script>
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/template/Header.xhtml" />
+			</ui:insert>
+		</div>
+		
+		<section class="main__middle__container">
+			<div class="titles blog text-left">
+				<div class="container">
+					<div class="seper"></div>
+					<h2 class="page__title">Add Your</h2>
+					<h2 class="page__title">Institute</h2>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row no_padding title__block nothing no-margin">
+
+					<div class="col-md-8">
+						<h3>Institute</h3>
+						<div style="width: 100%" class="dc_divider4"></div>
+						<p class="black-text"></p>
+						<p id="feedback"></p>
+						
+						<h:form enctype="multipart/form-data">
+						
+			    <div class="form-group col-md-5">
+								<h:outputText value="Title" />
+								<h:inputText id="name" style="width:100%;"
+									class="form-control" value="#{instituteBean.name}" />
+
+							</div>
+							
+							
+							 <div class="form-group col-md-5">
+								<h:outputText value="mail" />
+								<h:inputText id="mail" style="width:100%;"
+									class="form-control" value="#{instituteBean.mail}" />
+
+							</div>
+							
+							
+							
+							<div class="form-group col-md-5">
+								<h:outputText value="Sigle" />
+								<p:inputText id="sigle" rows="6" cols="33"
+									class="form-control" value="#{instituteBean.sigle}" />
+									
+									
+
+							</div>
+							<div class="form-group col-md-5">
+								<h:outputText value="Address" />
+								<p:inputText id="address" rows="6" cols="33"
+									class="form-control" value="#{instituteBean.address}" />
+   
+							</div>
+							
+							<div class="form-group col-md-5">
+								<h:outputText value="code postale" />
+								<p:inputText id="codepostale" rows="6" cols="33"
+									class="form-control" value="#{instituteBean.code_postale}" />
+   
+							</div>
+							
+							
+								<div class="form-group col-md-5">
+								<h:outputText value="Latitude" />
+								<h:inputText id="Latitude" style="width:100%;"
+									class="form-control" value="#{instituteBean.latitude}" />
+
+							</div>
+							
+							
+							
+                            
+                            <div class="form-group col-md-5">
+								<h:outputText value="Longitude" />
+								<h:inputText id="Longitude" style="width:100%;"
+									class="form-control" value="#{instituteBean.longitude}" />
+
+							</div>
+							
+							 <div class="form-group col-md-5">
+								<h:outputText value="web site" />
+								<h:inputText id="website" style="width:100%;"
+									class="form-control" value="#{instituteBean.website}" />
+
+							</div>
+							
+							
+							
+							
+							
+							 <div class="form-group col-md-5">
+								<h:outputText value="image" />
+								<h:inputFile  id="image" style="width:100%;"
+									class="form-control" value="#{instituteBean.imaje}" />
+
+							</div>
+							
+						
+							
+							
+							 <div class="form-group col-md-5">
+					
+   
+        <p:outputLabel for="access" value="access type:" />
+        <p:selectOneRadio id="access" value="#{instituteBean.type_acces}">
+            <f:selectItem itemLabel="Free" itemValue="Free" />
+            <f:selectItem itemLabel="Payant" itemValue="Payant" />
+        </p:selectOneRadio>
+ 
+        
+							</div>
+							
+							
+			
+							
+							
+							<div class="form-group col-md-5">
+								<h:outputText value="type" />
+								<h:selectOneMenu id="type" class="form-control" value="#{instituteBean.type}">
+									<f:selectItem itemLabel="Select a type" itemValue=""/>
+                                    <f:selectItems value="#{type.typeInst}" />
+								</h:selectOneMenu>
+
+							</div>
+							
+							
+								
+							 <div class="form-group col-md-10">
+								<h:outputText value="Description" />
+								
+									
+									 <p:editor id="editor" widgetVar="editorWidget" value="#{instituteBean.description}" width="600" />
+
+							</div>
+
+							<div class="clearfix"></div>
+							<h:commandButton id="btn" class="btn btn-lg btn-info"
+								action="#{instituteBean.AddInstitute()}" value="Add now">
+							</h:commandButton>
+ 
+    
+							
+
+
+
+
+						</h:form>
+					</div>
+
+					<div class="col-md-4">
+						<h3>Get in touch with us</h3>
+						<div style="width: 60%" class="dc_divider4"></div>
+						<p class="black-text">
+							<span>Address:</span> 123 Street, Fremont, CA, USA
+						</p>
+						<p class="black-text">
+							<span>Telephone:</span> (+216) 71 001 002
+						</p>
+						<p class="black-text">
+							<span>Fax:</span> (+216) 71 002 0002
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/template/footer.xhtml" />
+			</ui:insert>
+		</div>
+
+</h:body>
+	
+</ui:composition>

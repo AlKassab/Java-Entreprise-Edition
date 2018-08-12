@@ -1,0 +1,139 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/template/Header.xhtml" />
+			</ui:insert>
+		</div>
+		<section class="main__middle__container">
+			<div class="titles blog text-left">
+				<div class="container">
+					<div class="seper"></div>
+					<h2 class="page__title">Add Your</h2>
+					<h2 class="page__title">Post</h2>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row no_padding title__block nothing no-margin">
+
+					<div class="col-md-8">
+						<h3>Blog</h3>
+						<div style="width: 100%" class="dc_divider4"></div>
+						<p class="black-text"></p>
+						<p id="feedback"></p>
+						<p:messages showDetail="true" autoUpdate="true" closable="true" />
+						<h:form>
+							<div class="form-group col-md-6">
+								<p></p>
+								<h1>
+									<h:outputText id="topic" style="width:100%;" required="true"
+										requiredMessage="Please put a Topic"
+										value="#{specblog.post.object}" escape="false" />
+								</h1>
+								<p>#{specblog.post.datepub}</p>
+								<p:rating value="#{specblog.avgRaiting()}" readonly="true" />
+							</div>
+							<div class="form-group col-md-8">
+								<h3>
+									<h:outputText style="width:100%;" required="true"
+										requiredMessage="Please put a Topic" rows="7"
+										value="#{specblog.post.content}" escape="false" />
+								</h3>
+								<br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+								<div style="width: 155%" class="dc_divider4"></div>
+								<p:rating value="#{specblog.a}"
+									rendered="#{specblog.ratingrender}" disabled="#{specblog.z}">
+									<p:ajax event="rate" listener="#{specblog.onrate}"
+										update="@this" process="@this" />
+								</p:rating>
+								<h3>
+									<h:outputText id="comm" style="width:100%;" required="true"
+										requiredMessage="Please put a Topic" value="Comments"
+										escape="false" />
+								</h3>
+
+
+
+								<h:inputTextarea style="width:155%;" class="form-control"
+									required="true" requiredMessage="Please put a Topic" rows="2"
+									value="#{specblog.comment.field}" />
+								<div class="clearfix"></div>
+								<br></br>
+								<p:commandButton id="btn" class="btn btn-lg btn-info"
+									action="#{specblog.addComment()}" update="@form" ajax="true"
+									process="@form" value="Comment">
+								</p:commandButton>
+
+								<br></br> <br></br> <br></br>
+								<ui:repeat var="com" value="#{specblog.lComments}">
+									<h4>
+										<h:outputText style="width:100%;" required="true"
+											requiredMessage="Please put a Topic" value="#{com.field}"
+											escape="false" />
+										<br></br>
+										<h:outputText style="width:100%;" required="true"
+											requiredMessage="Please put a Topic" value="#{com.timestamp}"
+											escape="false" />
+										<br></br>
+										<h:outputText style="width:100%;" required="true"
+											requiredMessage="Please put a Topic"
+											value="#{com.user.firstName}" escape="false" />
+										<br></br>
+										<p:commandLink rendered="#{specblog.render}" process="@this"
+											ajax="true" update="@form"
+											action="#{specblog.deleteComment(com)}">
+											<h:graphicImage value="/ressources/images/remove.png"
+												width="32" height="32"></h:graphicImage>
+										</p:commandLink>
+										<p:commandLink rendered="#{specblog.render}" process="@this"
+											ajax="true" update="@form" action="#{specblog.preUpdate(com)}">
+											<h:graphicImage value="/ressources/images/edit.png"
+												width="32" height="32"></h:graphicImage>
+										</p:commandLink>
+									</h4>
+									<br></br>
+									<br></br>
+									<br></br>
+								</ui:repeat>
+							</div>
+
+
+
+
+
+
+
+						</h:form>
+					</div>
+
+					<div class="col-md-4">
+						<h3>Get in touch with us</h3>
+						<div style="width: 60%" class="dc_divider4"></div>
+						<p class="black-text">
+							<span>Address:</span> 123 Street, Fremont, CA, USA
+						</p>
+						<p class="black-text">
+							<span>Telephone:</span> (+216) 71 001 002
+						</p>
+						<p class="black-text">
+							<span>Fax:</span> (+216) 71 002 0002
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/template/footer.xhtml" />
+			</ui:insert>
+		</div>
+	</h:body>
+
+</ui:composition>

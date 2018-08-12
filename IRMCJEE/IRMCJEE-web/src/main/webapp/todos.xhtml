@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>register</title>
+</h:head>
+<h:body>
+	<h2>Registration</h2>
+	<h:form>
+		<h:panelGrid columns="7">
+			<h:outputLabel value=" First Name" for="fistname" />
+		<h:inputText value="#{userBean.u.firstName}" id="fistname" required="true" />
+
+		<h:outputLabel value="Last Name" for="fistname" />
+		<h:inputText value="#{userBean.u.lastName}" id="lastname" required="true" />
+		
+		<h:outputLabel value="Username" for="username" />
+		<h:inputText value="#{userBean.u.username}" id="username" required="true" />
+		
+		
+		<p:outputLabel for="email" value="Email Adress*" />
+		<h:inputText id="email" value="#{userBean.u.email}"
+			validatorMessage="invalid email!">
+			<f:ajax event="blur" execute="@this" render="msg_email" />
+			
+		</h:inputText>
+		<h:message id="msg_email" for="email" styleClass="error" />
+
+		<h:outputLabel value="Address" for="address" />
+		<h:inputText value="#{userBean.u.address}" id="address" required="true" />
+
+		<h:outputLabel value="Role" for="role" />
+		<b><h:inputText value="#{userBean.u.role}" id="role" required="true" /></b>
+
+		<h:outputLabel value="Password" for="password" />
+		<h:inputText value="#{userBean.u.password}" id="password" required="true" />
+		
+		<h:outputLabel value="Confirm Password" for="cpassword" />
+		<h:inputText value="#{userBean.u.confirmPassword}" id="cpassword" required="true" />
+		
+		<h:outputLabel value="Country" for="country" />
+		<h:inputText value="#{userBean.u.country}" id="country" required="true" />
+		
+	
+		
+			<p:outputLabel for="phone" value="Phone Number " />
+		<h:inputText id="phone" value="#{userBean.u.phoneNumber}"
+						>
+						
+						<f:ajax event="blur" execute="@this" render="msg_phone" />
+					</h:inputText>
+					<h:message id="msg_phone" for="phone" styleClass="error" />
+				
+		<h:commandButton action="#{userBean.createProfile()}"
+			value="REGISTER NOW" />
+		</h:panelGrid>
+	</h:form>
+	<h3>Already registred todos</h3>
+	<h:dataTable value="#{todoBean.todos}" var="todo">
+		<h:column>
+			<h:outputText value="#{todo.text}" />
+		</h:column>
+	</h:dataTable>
+</h:body>
+</html>
